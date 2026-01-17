@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Register a new complaint - Smart Complaint Management System">
+    <title>Register Complaint - SCMS</title>
+
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <i class="bi bi-shield-check"></i> SCMS
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="register.html">Register Complaint</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="view-complaints.html">View Complaints</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <div class="page-header">
+        <div class="container">
+            <h1><i class="bi bi-file-earmark-plus"></i> Register New Complaint</h1>
+            <p>Fill out the form below to submit your complaint</p>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container mb-5">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <!-- Complaint Registration Form -->
+                <div class="form-container">
+                    <form id="complaintForm">
+                        <!-- Name Field -->
+                        <div class="form-group mb-4">
+                            <label for="name" class="form-label">
+                                Full Name <span class="text-danger">*</span>
+                            </label>
+                            <input type="text" class="form-control" id="name" placeholder="Enter your full name"
+                                required>
+                            <div class="invalid-feedback"></div>
+                        </div>
+
+                        <!-- Email Field -->
+                        <div class="form-group mb-4">
+                            <label for="email" class="form-label">
+                                Email Address <span class="text-danger">*</span>
+                            </label>
+                            <input type="email" class="form-control" id="email" placeholder="Enter your email address"
+                                required>
+                            <div class="invalid-feedback"></div>
+                        </div>
+
+                        <!-- Category Field -->
+                        <div class="form-group mb-4">
+                            <label for="category" class="form-label">
+                                Complaint Category <span class="text-danger">*</span>
+                            </label>
+                            <select class="form-select" id="category" required>
+                                <option value="">Select a category</option>
+                                <option value="Technical">Technical Issue</option>
+                                <option value="Billing">Billing & Payment</option>
+                                <option value="Service">Service Quality</option>
+                                <option value="General">General Inquiry</option>
+                            </select>
+                            <div class="invalid-feedback"></div>
+                        </div>
+
+                        <!-- Priority Field -->
+                        <div class="form-group mb-4">
+                            <label for="priority" class="form-label">
+                                Priority Level <span class="text-danger">*</span>
+                            </label>
+                            <select class="form-select" id="priority" required>
+                                <option value="">Select priority</option>
+                                <option value="Low">Low</option>
+                                <option value="Medium">Medium</option>
+                                <option value="High">High</option>
+                            </select>
+                            <div class="invalid-feedback"></div>
+                        </div>
+
+                        <!-- Description Field -->
+                        <div class="form-group mb-4">
+                            <label for="description" class="form-label">
+                                Complaint Description <span class="text-danger">*</span>
+                            </label>
+                            <textarea class="form-control" id="description" rows="5"
+                                placeholder="Describe your complaint in detail" required></textarea>
+                            <div class="invalid-feedback"></div>
+                        </div>
+
+                        <!-- Submit Button -->
+                        <div class="text-center mt-4">
+                            <button type="submit" class="btn btn-submit" id="submitBtn">
+                                <i class="bi bi-check-circle"></i> Submit Complaint
+                            </button>
+                            <button type="button" class="btn btn-secondary ms-2" id="resetBtn">
+                                <i class="bi bi-arrow-clockwise"></i> Reset Form
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Success Message (Hidden by default) -->
+                <div id="successMessage" class="mt-4" style="display: none;">
+                    <div class="alert alert-custom alert-success">
+                        <h5><i class="bi bi-check-circle-fill"></i> Success!</h5>
+                        <p class="mb-2">Your complaint has been successfully registered.</p>
+                        <p class="mb-0">
+                            <strong>Complaint ID:</strong> <span id="complaintId"></span>
+                        </p>
+                        <div class="mt-3">
+                            <a href="view-complaints.html" class="btn btn-sm btn-light">
+                                View All Complaints
+                            </a>
+                            <button class="btn btn-sm btn-outline-light ms-2" onclick="location.reload()">
+                                Register Another
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <h5 class="gradient-text">Smart Complaint Management System</h5>
+                <p class="mt-3">A front-end web application for efficient complaint management</p>
+
+                <div class="team-info">
+                    <h6>Developed By</h6>
+                    <div class="team-member">
+                        <strong>Haresh Kumar</strong> - CMS ID: 023-23-0435
+                    </div>
+                    <div class="team-member">
+                        <strong>Asadullah Shaikh</strong> - CMS ID: 023-23-0080
+                    </div>
+                </div>
+
+                <div class="copyright">
+                    <p>&copy; 2026 Smart Complaint Management System. Academic Project.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Custom Script with ES6 Features -->
+    <script type="module">
+        import ComplaintManager from './js/complaint-manager.js';
+        import FormValidator from './js/form-validator.js';
+        import { Notify } from './js/utils.js';
+
+        // Initialize managers
+        const manager = new ComplaintManager();
+
+        // Validation rules using ES6 object literal
+        const validationRules = {
+            name: { required: true, label: 'Full Name', minLength: 3 },
+            email: { required: true, email: true, label: 'Email Address' },
+            category: { required: true, label: 'Category' },
+            priority: { required: true, label: 'Priority' },
+            description: { required: true, label: 'Description', minLength: 10 }
+        };
+
+        // Attach real-time validation to form fields using ES6 arrow functions
+        Object.keys(validationRules).forEach(fieldId => {
+            FormValidator.attachRealTimeValidation(fieldId, validationRules[fieldId]);
+        });
+
+        // Handle form submission
+        document.getElementById('complaintForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            // Gather form data using ES6 destructuring and object shorthand
+            const formData = {
+                name: document.getElementById('name').value.trim(),
+                email: document.getElementById('email').value.trim(),
+                category: document.getElementById('category').value,
+                priority: document.getElementById('priority').value,
+                description: document.getElementById('description').value.trim()
+            };
+
+            // Validate form
+            const validation = FormValidator.validateForm(formData, validationRules);
+
+            if (!validation.isValid) {
+                // Show errors using ES6 for...of loop
+                for (const [field, message] of Object.entries(validation.errors)) {
+                    FormValidator.showError(field, message);
+                }
+                Notify.error('Please fix the errors in the form');
+                return;
+            }
+
+            // Disable submit button
+            const submitBtn = document.getElementById('submitBtn');
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<span class="spinner-border spinner-border-sm me-2"></span> Submitting...';
+
+            try {
+                // Add complaint using Promise (ES6 feature)
+                const complaint = await manager.addComplaint(formData);
+
+                // Show success message
+                document.getElementById('complaintId').textContent = complaint.id;
+                document.getElementById('successMessage').style.display = 'block';
+                document.getElementById('complaintForm').style.display = 'none';
+
+                // Show notification
+                Notify.success('Complaint registered successfully!');
+
+                // Scroll to success message
+                document.getElementById('successMessage').scrollIntoView({ behavior: 'smooth' });
+
+            } catch (error) {
+                Notify.error('Failed to register complaint. Please try again.');
+                console.error('Error:', error);
+            } finally {
+                // Re-enable submit button
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = '<i class="bi bi-check-circle"></i> Submit Complaint';
+            }
+        });
+
+        // Reset button handler using arrow function
+        document.getElementById('resetBtn').addEventListener('click', () => {
+            document.getElementById('complaintForm').reset();
+            FormValidator.clearValidation('complaintForm');
+        });
+    </script>
+</body>
+
+</html>
